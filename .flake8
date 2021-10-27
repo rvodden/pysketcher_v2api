@@ -1,0 +1,21 @@
+[flake8]
+exclude =
+    .git,
+    .venv,
+    .tox,
+    .hypothesis,
+    .github,
+    .circlci,
+    dist,
+    pysketcher.egg-info,
+    test-results,
+max-line-length = 80
+select = B,B9,B950,BLK,C,D,DAR,E,F,I,S,W
+ignore = E203, E501, W503, D107
+application-import-names = pysketcher,tests
+import-order-style = google
+per-file-ignores =
+    docs/*:S101,D100,D101,D102,D103,D104,D107
+    tests/*:S101,D100,D101,D102,D103,D104,D107
+    noxfile.py:D100,D101,D102,D103
+docstring-convention = google
