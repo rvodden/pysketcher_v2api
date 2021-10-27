@@ -1,7 +1,4 @@
 from ._abstract_scalar import AbstractScalar
-from ._additive_constraint import AdditiveConstraint
-from ._subtractive_constraint import SubtractiveConstraint
-
 
 class Scalar(AbstractScalar):
     """A concrete implementation of a constrained scalar."""
@@ -23,3 +20,6 @@ class Scalar(AbstractScalar):
         except TypeError:
             return NotImplemented
         return s
+
+from ._additive_constraint import AdditiveConstraint
+from ._subtractive_constraint import SubtractiveConstraint

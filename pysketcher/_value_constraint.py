@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from abc import ABC
 from typing import Generic, TypeVar
 
-from ._constrainable import Constrainable
+from ._constraint_set import ConstraintSet
 from ._error import InvalidConstraintException
 
 
@@ -23,7 +25,7 @@ class ValueConstraint(Generic[T], ABC):
         return f"{self.__class__.__name__}<{self.value}>"
 
     def validate_object(self, instance) -> None:
-        if not isinstance(instance, Constrainable):
+        if not isinstance(instance, ConstraintSet):
             raise InvalidConstraintException(
                 f"{self.__class__.__name__} can only"
                 f" be applied to `ConstraintSet`, it cannot be applied to `{instance.__class__.__name__}`"
@@ -32,8 +34,11 @@ class ValueConstraint(Generic[T], ABC):
     def __eq__(self, other) -> bool:
         return isinstance(other, self.__class__) and self.value == other.value
 
-    def apply_reciprocal_constraint(self, instance: Constrainable) -> None:
+    def apply_reciprocal_constraint(self, instance: Constraint) -> None:
         pass
 
-    def cascade_constraints(self, instance: Constrainable) -> None:
+    def cascade_constraints(self, instance: Constraint) -> None:
         pass
+
+
+from ._constraint import Constraint

@@ -1,8 +1,8 @@
-from abc import ABC
-from typing import Any
-
 from ._abstract_scalar import AbstractScalar
 from ._scalar_constraint import ScalarConstraint
+
+from abc import ABC
+from typing import Any
 
 
 class ScalarBinaryConstraint(ScalarConstraint, ABC):
@@ -27,3 +27,5 @@ class ScalarBinaryConstraint(ScalarConstraint, ABC):
     
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}<{self._s1, self._s2}>"
+
+

@@ -1,4 +1,3 @@
-from ._constraint_set import ConstraintSet
 from ._fixed_value_constraint import FixedValueConstraint
 from ._linked_value_constraint import LinkedValueConstraint
 
@@ -48,3 +47,5 @@ class ConstrainedValue:
         # otherwise use a FixedValueConstraint to constrain to the provided
         # value
         constraint_set.constrain_with(FixedValueConstraint(value))
+
+from ._constraint_set import ConstraintSet
