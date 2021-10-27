@@ -9,7 +9,9 @@ class LinkedValueConstraint(ValueConstraint[Constraint]):
     def __init__(self, constraint_set) -> None:
         if not isinstance(constraint_set, ConstraintSet):
             raise TypeError(
-                "LinkedValueConstraint must be initialized with a ConstraintSet subclass.")
+                "LinkedValueConstraint must be initialized "
+                "with a ConstraintSet subclass."
+            )
         super().__init__(constraint_set)
 
     def apply_reciprocal_constraint(self, instance: Constraint) -> None:
@@ -21,4 +23,3 @@ class LinkedValueConstraint(ValueConstraint[Constraint]):
     @property
     def constraint_set(self):
         return self.value
-

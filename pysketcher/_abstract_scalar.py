@@ -3,5 +3,5 @@ from abc import ABC
 from ._constraint_set import ConstraintSet
 
 
-class AbstractScalar(ConstraintSet, ABC):
+class _AbstractScalar(ConstraintSet, ABC):
     pass

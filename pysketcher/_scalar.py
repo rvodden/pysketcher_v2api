@@ -1,7 +1,9 @@
-from ._abstract_scalar import AbstractScalar
+from ._abstract_scalar import _AbstractScalar
 
-class Scalar(AbstractScalar):
+
+class Scalar(_AbstractScalar):
     """A concrete implementation of a constrained scalar."""
+
     def __add__(self, other):
         s = self.__class__()
         # try:
@@ -21,5 +23,8 @@ class Scalar(AbstractScalar):
             return NotImplemented
         return s
 
-from ._additive_constraint import AdditiveConstraint
-from ._subtractive_constraint import SubtractiveConstraint
+
+from ._additive_constraint import AdditiveConstraint  # noqa: E402, I100, I101, I202
+from ._subtractive_constraint import (  # noqa: E402, I100, I101, I202
+    SubtractiveConstraint,
+)

@@ -48,4 +48,5 @@ class ConstrainedValue:
         # value
         constraint_set.constrain_with(FixedValueConstraint(value))
 
-from ._constraint_set import ConstraintSet
+
+from ._constraint_set import ConstraintSet  # noqa: E402, I100, I101, I202

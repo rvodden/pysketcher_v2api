@@ -3,6 +3,7 @@ from typing import Any, List
 from ._constraint import Constraint
 from ._error import UnderConstrainedError
 
+
 class ConstraintSet:
     def __init__(self, name=""):
         self._constraints: List[Constraint] = []
@@ -41,7 +42,15 @@ class ConstraintSet:
         return self._constraints
 
     def resolve(self) -> Any:
-        """Naive implementation to aid testing"""
+        """Naive implementation to aid testing.
+
+        Returns:
+            the value to which the ConstraintSet resolves.
+
+        Raises:
+            UnderConstrainedError: if the value cannot be
+                ascertained by the current set of constraints
+        """
         for constraint in self._constraints:
             if isinstance(constraint, FixedValueConstraint):
                 return constraint.value
@@ -49,5 +58,10 @@ class ConstraintSet:
                 return constraint.constraint_set.resolve()
         raise UnderConstrainedError("Fixed Value has not been provided.")
 
-from ._fixed_value_constraint import FixedValueConstraint
-from ._linked_value_constraint import LinkedValueConstraint
+
+from ._fixed_value_constraint import (  # noqa: E402, I100, I101, I202
+    FixedValueConstraint,
+)
+from ._linked_value_constraint import (  # noqa: E402, I100, I101, I202
+    LinkedValueConstraint,
+)

@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import Any
 
-from ._abstract_scalar import AbstractScalar
+from ._abstract_scalar import _AbstractScalar
 from ._constraint import Constraint
 from ._error import InvalidConstraintException
 
@@ -18,4 +18,4 @@ class ScalarConstraint(Constraint, ABC):
 
     @staticmethod
     def _is_scalar(obj: Any):
-        return isinstance(obj, AbstractScalar)
+        return isinstance(obj, _AbstractScalar)

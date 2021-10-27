@@ -1,3 +1,4 @@
+"""The pysketcher version 2 API."""
 from ._additive_constraint import AdditiveConstraint
 from ._constrained_value import ConstrainedValue
 from ._constraint import Constraint
