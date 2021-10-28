@@ -9,15 +9,16 @@ class ScalarBinaryConstraint(ScalarConstraint, ABC):
     """A Constraint which applies to a Scalar and accepts two Scalar Parameters."""
 
     def __init__(self, s1, s2):
-        if not isinstance(s1, _AbstractScalar):
-            raise TypeError(
-                f"First argument must be a Scalar, not a {s1.__class__.__name__}."
-            )
-        if not isinstance(s2, (_AbstractScalar, int, float)):
-            raise TypeError(
-                "Second argument must be a Scalar, "
-                f"int or float; not a {s2.__class__.__name__}."
-            )
+        arg_dict = {
+            "First argument": s1,
+            "Second argument": s2,
+        }
+        for name, arg in arg_dict.items():
+            if not isinstance(arg, (_AbstractScalar, int, float)):
+                raise TypeError(
+                    f"{name} must be a Scalar, "
+                    f"int or float; not a {arg.__class__.__name__}."
+                )
         self._s1 = s1
         self._s2 = s2
 

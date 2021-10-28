@@ -1,4 +1,8 @@
 from ._abstract_scalar import _AbstractScalar
+from ._additive_constraint import AdditiveConstraint
+from ._divisive_constraint import DivisiveConstraint
+from ._multiplicative_constraint import MultiplicativeConstraint
+from ._subtractive_constraint import SubtractiveConstraint
 
 
 class Scalar(_AbstractScalar):
@@ -6,10 +10,10 @@ class Scalar(_AbstractScalar):
 
     def __add__(self, other):
         s = self.__class__()
-        # try:
-        s.constrain_with(AdditiveConstraint(self, other))
-        # except TypeError:
-        #     return NotImplemented
+        try:
+            s.constrain_with(AdditiveConstraint(self, other))
+        except TypeError:
+            return NotImplemented
         return s
 
     def __radd__(self, other):
@@ -23,8 +27,21 @@ class Scalar(_AbstractScalar):
             return NotImplemented
         return s
 
+    def __truediv__(self, other):
+        s = self.__class__()
+        try:
+            s.constrain_with(DivisiveConstraint(self, other))
+        except TypeError:
+            return NotImplemented
+        return s
 
-from ._additive_constraint import AdditiveConstraint  # noqa: E402, I100, I101, I202
-from ._subtractive_constraint import (  # noqa: E402, I100, I101, I202
-    SubtractiveConstraint,
-)
+    def __mul__(self, other):
+        s = self.__class__()
+        try:
+            s.constrain_with(MultiplicativeConstraint(self, other))
+        except TypeError:
+            return NotImplemented
+        return s
+
+    def __rmul__(self, other):
+        return self.__mul__(other)
