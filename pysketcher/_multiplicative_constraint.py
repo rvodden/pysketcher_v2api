@@ -1,7 +1,6 @@
-from ._scalar_binary_constraint import ScalarBinaryConstraint
+from ._scalar_associative_binary_constraint import ScalarAssociativeBinaryConstraint
 
-
-class MultiplicativeConstraint(ScalarBinaryConstraint):
+class MultiplicativeConstraint(ScalarAssociativeBinaryConstraint):
     """Constrains a Scalar to the multiple of two other Scalars."""
 
     def apply_reciprocal_constraint(self, instance) -> None:

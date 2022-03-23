@@ -4,6 +4,14 @@ from pysketcher import ConstraintSet, InvalidConstraintException, LinkedValueCon
 
 
 class TestLinkedValueConstraint:
+    def test_initializer(self):
+        with pytest.raises(TypeError):
+            under_test = LinkedValueConstraint("Invalid Type")
+
+        cs = ConstraintSet(name="link")
+        under_test = LinkedValueConstraint(cs)
+        assert under_test.value == cs
+
     def test_value(self):
         constraint_set = ConstraintSet()
         constraint = LinkedValueConstraint(constraint_set)

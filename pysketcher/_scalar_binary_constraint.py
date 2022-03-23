@@ -28,4 +28,4 @@ class ScalarBinaryConstraint(ScalarConstraint, ABC):
         return self._s1 is other._s1 and self._s2 is other._s2
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}<{self._s1, self._s2}>"
+        return f"{self.__class__.__name__}<{self._s1}, {self._s2}>"

@@ -6,6 +6,9 @@ from pysketcher import ConstraintSet, FixedValueConstraint, InvalidConstraintExc
 
 
 class TestFixedValueConstraint:
+    def make_one(self, value=3):
+        return FixedValueConstraint(value)
+
     def test_value(self):
         constraint = FixedValueConstraint(3)
         assert constraint.value == 3
@@ -21,12 +24,14 @@ class TestFixedValueConstraint:
             constraint.validate_object(3)
 
         cs = ConstraintSet(name="test")
+        # slightly strange construct to assert that an
+        # exception is not thrown
         try:
             constraint.validate_object(cs)
         except InvalidConstraintException as e:
             raise AssertionError from e
-
-        assert True
+        else:
+            assert True
 
     def test_equality(self):
         constraint1 = FixedValueConstraint(1)
