@@ -4,7 +4,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from ._constraint import Constraint  # noqa: E402, I100, I101, I202
-from ._constraint_set import ConstraintSet
+from ._parameter_instance import ParameterInstance
 from ._error import InvalidConstraintException
 
 
@@ -26,7 +26,7 @@ class ValueConstraint(Constraint, Generic[T], ABC):
         return f"{self.__class__.__name__}<{self.value}>"
 
     def validate_object(self, instance) -> None:
-        if not isinstance(instance, ConstraintSet):
+        if not isinstance(instance, ParameterInstance):
             raise InvalidConstraintException(
                 f"{self.__class__.__name__} can only"
                 f" be applied to `ConstraintSet`, it"

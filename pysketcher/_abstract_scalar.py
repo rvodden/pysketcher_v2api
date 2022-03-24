@@ -1,7 +1,7 @@
 from abc import ABC
 
-from ._constraint_set import ConstraintSet
+from ._parameter_instance import ParameterInstance
 
 
-class _AbstractScalar(ConstraintSet, ABC):
+class _AbstractScalar(ParameterInstance, ABC):
     pass

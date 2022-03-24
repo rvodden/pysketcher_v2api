@@ -1,13 +1,15 @@
-from pysketcher import ConstrainedValue, ConstrainedObject, Scalar
+from pysketcher import Parameter, ConstrainedObject, Scalar
+
 
 class Point(ConstrainedObject):
-    x = ConstrainedValue(Scalar)
-    y = ConstrainedValue(Scalar)
+    x = Parameter(Scalar)
+    y = Parameter(Scalar)
+
 
 p = Point("p")
 q = Point("q")
 
-q.x = p.x
+q.x = p.x + p.y
 p.x = 3.
 
 print(repr(p.x))

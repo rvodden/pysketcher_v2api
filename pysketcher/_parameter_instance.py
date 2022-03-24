@@ -1,10 +1,8 @@
+from __future__ import annotations
 from typing import Any, List
 
-from ._constraint import Constraint
-from ._error import UnderConstrainedError
 
-
-class ConstraintSet:
+class ParameterInstance:
     def __init__(self, name=""):
         self._constraints: List[Constraint] = []
         self._name: str = name
@@ -16,7 +14,7 @@ class ConstraintSet:
         """Add a constraint to this objects list of constraints."""
         self._constraints.append(constraint)
         constraint.cascade_constraints(self)
-        constraint.apply_reciprocal_constraint(self)
+        # constraint.apply_reciprocal_constraint(self)
 
     def reset_constraints(self) -> None:
         """Removes the existing constraints from the constraint set."""
@@ -37,31 +35,22 @@ class ConstraintSet:
     def __str__(self) -> str:
         return self._name
 
+    def set(self, value, resolve: bool = False):
+        self._value = value
+        if resolve:
+            self._resolved = True
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        self.set(value)
+
     @property
     def constraints(self) -> List[Constraint]:
         return self._constraints
 
-    def resolve(self) -> Any:
-        """Naive implementation to aid testing.
 
-        Returns:
-            the value to which the ConstraintSet resolves.
-
-        Raises:
-            UnderConstrainedError: if the value cannot be
-                ascertained by the current set of constraints
-        """
-        for constraint in self._constraints:
-            if isinstance(constraint, FixedValueConstraint):
-                return constraint.value
-            if isinstance(constraint, LinkedValueConstraint):
-                return constraint.constraint_set.resolve()
-        raise UnderConstrainedError("Fixed Value has not been provided.")
-
-
-from ._fixed_value_constraint import (  # noqa: E402, I100, I101, I202
-    FixedValueConstraint,
-)
-from ._linked_value_constraint import (  # noqa: E402, I100, I101, I202
-    LinkedValueConstraint,
-)
+from ._constraint import Constraint

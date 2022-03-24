@@ -1,4 +1,5 @@
-from ._constraint_set import ConstraintSet
+from ._parameter_instance import ParameterInstance
+
 
 class ConstrainedObject:
     _constraint_sets: list[str]
@@ -12,7 +13,7 @@ class ConstrainedObject:
         return self._name
 
     @property
-    def parameters(self) -> list[ConstraintSet]:
+    def parameters(self) -> list[ParameterInstance]:
         retval = []
         for cs in self._constraint_sets:
             retval.append(getattr(self, cs))

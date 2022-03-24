@@ -8,12 +8,12 @@ class TestMultiplicativeConstraint(
 ):
     _class = MultiplicativeConstraint
 
-    def test_recipriocal_cosntraint(self):
-        s1 = Scalar()
-        s2 = Scalar()
+    # def test_recipriocal_cosntraint(self):
+    #     s1 = Scalar()
+    #     s2 = Scalar()
 
-        s3 = Scalar()
-        s3.constrain_with(MultiplicativeConstraint(s1, s2))
+    #     s3 = Scalar()
+    #     s3.constrain_with(MultiplicativeConstraint(s1, s2))
 
-        assert DivisiveConstraint(s3, s2) in s1.constraints
-        assert DivisiveConstraint(s3, s1) in s2.constraints
+    #     assert DivisiveConstraint(s3, s2) in s1.constraints
+    #     assert DivisiveConstraint(s3, s1) in s2.constraints
