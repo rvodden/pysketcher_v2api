@@ -6,6 +6,8 @@ class ParameterInstance:
     def __init__(self, name=""):
         self._constraints: List[Constraint] = []
         self._name: str = name
+        self._value = None
+        self._resolved = False
 
     def constrain_with(self, constraint: Constraint) -> None:
         constraint.validate_object(self)
@@ -14,7 +16,6 @@ class ParameterInstance:
         """Add a constraint to this objects list of constraints."""
         self._constraints.append(constraint)
         constraint.cascade_constraints(self)
-        # constraint.apply_reciprocal_constraint(self)
 
     def reset_constraints(self) -> None:
         """Removes the existing constraints from the constraint set."""

@@ -1,8 +1,8 @@
-from ._parameter_instance import ParameterInstance
+from __future__ import annotations
 
 
-class ConstrainedObject:
-    _constraint_sets: list[str]
+class ParameterizedObject:
+    _parameter_instances: list[str]
     _name: str
 
     def __init__(self, name: str):
@@ -15,6 +15,9 @@ class ConstrainedObject:
     @property
     def parameters(self) -> list[ParameterInstance]:
         retval = []
-        for cs in self._constraint_sets:
-            retval.append(getattr(self, cs))
+        for parameter_instance in self._parameter_instances:
+            retval.append(getattr(self, parameter_instance))
         return retval
+
+
+from ._parameter_instance import ParameterInstance  # noqa: E402

@@ -10,13 +10,13 @@ class TestParameterInstance:
 
     def test_constrain_with(self):
         under_test = ParameterInstance()
-        constraint = self.MockConstraint()
+        constraint = self.MockConstraint("mock_constraint")
         under_test.constrain_with(constraint)
         assert under_test.constraints == [constraint]
 
     def test_reset_constraints(self):
         under_test = ParameterInstance()
-        constraint = self.MockConstraint()
+        constraint = self.MockConstraint("mock_constraint")
         under_test.constrain_with(constraint)
         under_test.reset_constraints()
         assert under_test.constraints == []

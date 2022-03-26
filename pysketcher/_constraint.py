@@ -1,14 +1,11 @@
 from __future__ import annotations
 
-from abc import abstractmethod, ABC
+from abc import ABC
+from ._parameterized_object import ParameterizedObject
 
 
-class Constraint(ABC):
+class Constraint(ParameterizedObject, ABC):
     """Used to restrict the value of a `ConstrainedValue`."""
-
-    def __init__(self):
-        self._value = None
-        self._resolved = False
 
     def validate_object(self, instance: ParameterInstance) -> None:
         """Checks `instance` is suitable. Raises `InvalidConstraintException` if not."""
@@ -18,5 +15,6 @@ class Constraint(ABC):
 
     def cascade_constraints(self, instance: ParameterInstance) -> None:
         """Applies appropriate constraints to the properties of `instance`."""
+
 
 from ._parameter_instance import ParameterInstance

@@ -55,7 +55,7 @@ python_functions = "test_*"
 junit_duration_report = "call"
 junit_suite_name = "pysketcher"
 junit_family = "xunit1"
-addopts = ["--doctest-modules", "--testdox"]
+addopts = ["--doctest-modules"]
 
 [tool.coverage.run]
 branch = true

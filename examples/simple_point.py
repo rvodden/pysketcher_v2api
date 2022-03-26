@@ -1,7 +1,7 @@
-from pysketcher import Parameter, ConstrainedObject, Scalar
+from pysketcher import Parameter, ParameterizedObject, Scalar
 
 
-class Point(ConstrainedObject):
+class Point(ParameterizedObject):
     x = Parameter(Scalar)
     y = Parameter(Scalar)
 
